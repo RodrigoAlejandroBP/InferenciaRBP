@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Inferencia Estadistica</title>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type="text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Inferencia Estadistica</h1>
+
+</div>
+
+
+<hr />
+<div id="nombre-rodrigo-alejandro-bravo-pina" class="section level5">
+<h5><em>Nombre : Rodrigo Alejandro Bravo Piña</em></h5>
+</div>
+<div id="fecha-14-de-marzo-2018" class="section level5">
+<h5><em>Fecha : 14 de Marzo 2018 </em></h5>
+</div>
+<div id="rut-19474644---k" class="section level5">
+<h5><em>Rut : 19474644 - k </em></h5>
+<hr />
+</div>
+<div id="comandos-para-obtener-ayuda" class="section level4">
+<h4>Comandos para obtener ayuda</h4>
+<pre><code>help.start() 
+
+?start     #Te redireccionara a una página que te enseñara como usar R.
+
+?rm()</code></pre>
+</div>
+<div id="obtener-lugar-de-carpeta-automatica" class="section level4">
+<h4>Obtener lugar de carpeta automática</h4>
+<pre><code>getwd()
+</code></pre>
+</div>
+<div id="asignar-la-nueva-carpeta" class="section level4">
+<h4>Asignar la nueva carpeta</h4>
+<pre><code>setwd(&quot;Direccion_Nueva&quot;)
+</code></pre>
+</div>
+<div id="comandos-con-listas" class="section level4">
+<h4>Comandos con listas</h4>
+<div id="sean-abcde-nuevas-variables-se-tiene" class="section level6">
+<h6>Sean a,b,c,d,e nuevas variables se tiene</h6>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Codigo</strong></th>
+<th><strong>Función</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>a &lt;- 6</strong></td>
+<td><em>Asignacion de variable</em></td>
+</tr>
+<tr class="even">
+<td><strong>b &lt;- 1+5</strong></td>
+<td><em>Suma</em></td>
+</tr>
+<tr class="odd">
+<td><strong>c &lt;- 5-3</strong></td>
+<td><em>Resta</em></td>
+</tr>
+<tr class="even">
+<td><strong>d &lt;- 1+5</strong></td>
+<td><em>Suma de variables </em></td>
+</tr>
+<tr class="odd">
+<td><strong>e &lt;- sqrt(c)</strong></td>
+<td><em>Raiz Cuadrada</em></td>
+</tr>
+<tr class="even">
+<td><strong>a ;b ;c ;d</strong></td>
+<td><em>Como imprimir </em></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="ver-variables-todas-las-variables-usadas" class="section level4">
+<h4>Ver variables todas las variables usadas</h4>
+<pre><code>ls()
+</code></pre>
+</div>
+<div id="borrar-una-variable" class="section level4">
+<h4>Borrar una variable</h4>
+<pre><code>rm(&quot;nombre_de_Variable&quot;)
+</code></pre>
+</div>
+<div id="creacion-de-vector" class="section level4">
+<h4>Creación de vector</h4>
+<pre class="r"><code>x &lt;- c(2,9,10,1,6,7,8) #con scan se puede hacer mucho mas facil ya que pide                                 #los valores para terminar se deja enblanco.
+x</code></pre>
+<pre><code>## [1]  2  9 10  1  6  7  8</code></pre>
+</div>
+<div id="operacion-vectores" class="section level4">
+<h4>Operación vectores</h4>
+<div id="multiplicacion-del-vector" class="section level6">
+<h6><strong>Multiplicacion del vector</strong></h6>
+<pre class="r"><code>x &lt;- c(2,9,10)
+x &lt;- x * 2
+
+#Ahora el nuevo x sera
+
+x  </code></pre>
+<pre><code>## [1]  4 18 20</code></pre>
+</div>
+<div id="division-del-vector" class="section level6">
+<h6><strong>Division del vector</strong></h6>
+<pre class="r"><code>x &lt;- c(2,9,10)
+x &lt;- x / 2
+
+#Ahora el nuevo x será
+
+x  </code></pre>
+<pre><code>## [1] 1.0 4.5 5.0</code></pre>
+</div>
+<div id="manipulacion-de-vectores-comandos-generales" class="section level6">
+<h6><strong>Manipulacion de Vectores comandos generales</strong></h6>
+<pre class="r"><code>#Extraer los valores en una posición
+
+x[c(2)]</code></pre>
+<pre><code>## [1] 4.5</code></pre>
+<pre class="r"><code>#En este caso se extrayo solamente el 4.5
+
+
+#Obtener el largo del vector
+
+length(x) </code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>#Largo es igual a 3
+
+#Borrar el elemento en una posicion
+
+x[-2]      </code></pre>
+<pre><code>## [1] 1 5</code></pre>
+<pre class="r"><code>#X es igual al vector [1,5]</code></pre>
+</div>
+</div>
+<div id="comandos-con-listas-1" class="section level4">
+<h4>Comandos con listas</h4>
+<table>
+<thead>
+<tr class="header">
+<th><em>Comando</em></th>
+<th><em>Función</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>max(x)</em></td>
+<td><em>Entrega el máximo</em></td>
+</tr>
+<tr class="even">
+<td><em>min(x)</em></td>
+<td><em>Entrega el minímo</em></td>
+</tr>
+<tr class="odd">
+<td><em>sum(x)</em></td>
+<td><em>Suma todos los valores</em></td>
+</tr>
+<tr class="even">
+<td><em>prod(x)</em></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><em>sort(x)</em></td>
+<td><em>Ordena de menor a mayor</em></td>
+</tr>
+<tr class="even">
+<td><em>sort.list(x)</em></td>
+<td><em>Ordena de mayor a menor</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="funciones" class="section level4">
+<h4><strong>Funciones</strong></h4>
+<div id="para-crear-una-funcion-tiene-la-siguiente-sintaxis" class="section level6">
+<h6>Para crear una funcion tiene la siguiente sintaxis</h6>
+<pre><code>nombrefun &lt;- function(a, b, c, ...) {
+  + }
+</code></pre>
+</div>
+<div id="ejemplo-area-de-un-cubo" class="section level6">
+<h6><strong>Ejemplo area de un cubo</strong></h6>
+<pre class="r"><code>areacubo &lt;- function(a){
+  y &lt;- a^3
+  return (y)
+}
+#La area del cubo es:
+
+areacubo(9)</code></pre>
+<pre><code>## [1] 729</code></pre>
+</div>
+<div id="obtener-la-media" class="section level5">
+<h5>Obtener la media</h5>
+<pre class="r"><code>prom &lt;- function(x){
+  z&lt;-length(x)
+  for(i in 1:z){
+    y &lt;- y + x[i]
+    
+  }
+  y &lt;- y/z
+  return (y)
+}</code></pre>
+</div>
+</div>
+<div id="obtener-la-mediana" class="section level4">
+<h4>Obtener la mediana</h4>
+<pre class="r"><code>mediana &lt;- function(x) {
+  ordenar &lt;- sort(x)
+  z &lt;- length(ordenar)
+  if((z%%2) == 0) {              #Compruebo si es par o impar
+    resultado &lt;- ((x[z/2]+x[(z/2)+1])/2)
+  }
+  else{
+    y &lt;- (z+1)/2
+    resultado &lt;- ordenar[c(y)]
+  }
+  
+  return(resultado)
+}</code></pre>
+<div id="ejemplo-impar" class="section level6">
+<h6><strong>Ejemplo impar</strong></h6>
+<pre class="r"><code>impar &lt;- c(4,5,6)
+mediana(impar)</code></pre>
+<pre><code>## [1] 5</code></pre>
+</div>
+<div id="ejemplo-par" class="section level6">
+<h6><strong>Ejemplo par</strong></h6>
+<pre class="r"><code>par&lt;- c(4,5,6,7)
+mediana(par)</code></pre>
+<pre><code>## [1] 5.5</code></pre>
+</div>
+</div>
+<div id="obtener-la-varianza" class="section level4">
+<h4>Obtener la varianza</h4>
+<pre class="r"><code>funcaux &lt;- function(x){
+  aux &lt;- 0
+  for(i in 1:length(x)){
+    aux &lt;- aux + x[i]/length(x)
+  }
+  return (aux)
+}
+
+varianza &lt;- function(vector){
+  aux &lt;- 0
+  for(i in 1:length(vector)){
+    aux &lt;- aux + ((vector[i] - funcaux(vector))^2)
+  }
+  
+  return (aux/(length(vector)-1) )
+}</code></pre>
+<div id="ejemplo-de-varianza-con-un-vector-de-largo-cuatro" class="section level6">
+<h6><strong>Ejemplo de varianza con un vector de largo cuatro</strong></h6>
+<pre class="r"><code>ejemploVarianza&lt;-c(2,2,1,1) # Se crea el nuevo vector
+
+varianza(ejemploVarianza)</code></pre>
+<pre><code>## [1] 0.3333333</code></pre>
+</div>
+<div id="ejemplo-de-varianza-con-un-vector-de-largo-cuatro-usando-la-funcion-predefinida" class="section level6">
+<h6><strong>Ejemplo de varianza con un vector de largo cuatro usando la funcion predefinida</strong></h6>
+<pre class="r"><code>var(ejemploVarianza)</code></pre>
+<pre><code>## [1] 0.3333333</code></pre>
+</div>
+</div>
+<div id="percentiles" class="section level4">
+<h4>Percentiles</h4>
+<pre class="r"><code>perc50 &lt;-function(x){
+  alpha &lt;- 0
+  ordenada &lt;- sort(x)
+  alpha &lt;- 1/2
+  n &lt;- length(ordenada)
+  i &lt;- alpha*(n+1)
+  return((1-0)*ordenada[i]+0*ordenada[i+1])
+  }
+  
+perc50(c(168,173,175,178,179,180,187))</code></pre>
+<pre><code>## [1] 178</code></pre>
+</div>
+<div id="matrices" class="section level4">
+<h4>Matrices</h4>
+<div id="crear-matriz" class="section level6">
+<h6>Crear Matriz</h6>
+<pre class="r"><code>Y &lt;- matrix(c(4, 1, 3, 2), nrow=2 , ncol = 2)
+Y</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    4    3
+## [2,]    1    2</code></pre>
+</div>
+<div id="obtener-un-dato-de-la-matriz" class="section level6">
+<h6>Obtener un dato de la matriz</h6>
+<pre class="r"><code>Y[1,1]</code></pre>
+<pre><code>## [1] 4</code></pre>
+</div>
+</div>
+<div id="operacion" class="section level4">
+<h4>Operacion</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Comando</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A+B</td>
+<td>Suma de matrices</td>
+</tr>
+<tr class="even">
+<td>A-B</td>
+<td>Resta de matrices</td>
+</tr>
+<tr class="odd">
+<td>A*B</td>
+<td>Escalar de matrices</td>
+</tr>
+<tr class="even">
+<td>A%*%B</td>
+<td>Multiplicacion de matrices</td>
+</tr>
+<tr class="odd">
+<td>t(A)</td>
+<td>Transpuesta de una matriz</td>
+</tr>
+<tr class="even">
+<td>diag(A)</td>
+<td>Diagonal de una matriz</td>
+</tr>
+<tr class="odd">
+<td>det(A)</td>
+<td>Determinante de una matriz</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="determinante-de-una-matriz-de-2x2" class="section level4">
+<h4>determinante de una matriz de 2x2</h4>
+<pre class="r"><code>determinante &lt;- function(x){
+  aux &lt;- x[1]*x[4]-x[2]*x[3]
+  return (aux)
+}</code></pre>
+<div id="obtenido-a-traves-de-la-funcion-creada" class="section level6">
+<h6><strong>Obtenido a través de la funcion creada</strong></h6>
+<pre class="r"><code>print (determinante(Y))</code></pre>
+<pre><code>## [1] 5</code></pre>
+</div>
+<div id="obtenido-a-traves-de-la-funcion-predeterminada-por-r" class="section level6">
+<h6><strong>Obtenido a través de la funcion predeterminada por R</strong></h6>
+<pre class="r"><code>print (det(Y))</code></pre>
+<pre><code>## [1] 5</code></pre>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
